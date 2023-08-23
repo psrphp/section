@@ -54,7 +54,6 @@ class Update extends Common
             'id' => $request->post('id'),
         ]);
         $db->update('psrphp_section_item', [
-            'type' => $request->post('type'),
             'title' => $request->post('title'),
             'style' => $request->post('style'),
             'pic' => $request->post('pic'),

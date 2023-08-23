@@ -29,13 +29,13 @@ class Section
                         break;
 
                     case 'tpl':
-                        $template->renderFromString((string)$section['content'], [
+                        return $template->renderFromString((string)$section['content'], [
                             'section' => $section,
                         ]);
                         break;
 
                     case 'data':
-                        $template->renderFromString((string)$section['content'], [
+                        return $template->renderFromString((string)$section['content'], [
                             'section' => $section,
                             'items' => $db->rand('psrphp_section_item', '*', [
                                 'section_id' => $section['id'],

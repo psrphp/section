@@ -9,6 +9,10 @@
 <table style="margin-top: 20px;">
     <thead>
         <tr>
+            <th>标题</th>
+            <th>标题样式</th>
+            <th>图片</th>
+            <th>链接地址</th>
             <th>状态</th>
             <th>管理</th>
         </tr>
@@ -16,6 +20,14 @@
     <tbody>
         {foreach $items as $vo}
         <tr>
+            <td>{$vo.title}</td>
+            <td><code>{$vo.style}</code></td>
+            <td>
+                {if $vo['pic']}
+                <img src="{$vo.pic}" width="50" alt="">
+                {/if}
+            </td>
+            <td>{$vo.url}</td>
             <td>
                 {if $vo['state'] == 1}
                 <span>已发布</span>

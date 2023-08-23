@@ -43,11 +43,11 @@ class Create extends Common
                                 break;
 
                             case 'tpl':
-                                $res[] = (new Code('模板', 'content'));
+                                $res[] = (new Code('模板', 'content'))->set('help', '支持{$section}变量');
                                 break;
 
                             case 'data':
-                                $res[] = (new Code('渲染模板', 'content'));
+                                $res[] = (new Code('渲染模板', 'content'))->set('help', '支持{$section}、{$items}变量');
                                 break;
 
                             default:

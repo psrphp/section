@@ -34,9 +34,9 @@ class Update extends Common
                 (new Col('col-md-8'))->addItem(
                     (new Hidden('id', $section['id'])),
                     (new Input('备注', 'tips', $section['tips'])),
-                    ...(function () use ($request, $router, $section): array {
+                    ...(function () use ($router, $section): array {
                         $res = [];
-                        switch ($request->get('type')) {
+                        switch ($section['type']) {
                             case 'text':
                                 $res[] = (new Textarea('内容', 'content', $section['content']));
                                 break;
@@ -46,11 +46,11 @@ class Update extends Common
                                 break;
 
                             case 'tpl':
-                                $res[] = (new Code('模板', 'content', $section['content']));
+                                $res[] = (new Code('模板', 'content', $section['content']))->set('help', '支持{$section}变量');
                                 break;
 
                             case 'data':
-                                $res[] = (new Code('渲染模板', 'content', $section['content']));
+                                $res[] = (new Code('渲染模板', 'content', $section['content']))->set('help', '支持{$section}、{$items}变量');
                                 break;
 
                             default:
