@@ -40,11 +40,7 @@
         <tr style="display: none;">
             <td colspan="4">
                 <?php
-                try {
-                    echo App\Psrphp\Section\Model\Section::render($vo['name']);
-                } catch (\Throwable $th) {
-                    echo '<span style="color:red;">错误：' . $th->getMessage() . '</span><pre>' . $th->getTraceAsString() . '</pre>';
-                }
+                echo App\Psrphp\Section\Model\Section::render($vo['name']);
                 ?>
             </td>
         </tr>
