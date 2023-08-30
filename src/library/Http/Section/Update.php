@@ -8,13 +8,12 @@ use App\Psrphp\Admin\Http\Common;
 use App\Psrphp\Admin\Lib\Response;
 use PsrPHP\Database\Db;
 use PsrPHP\Form\Builder;
-use PsrPHP\Form\Component\Col;
-use PsrPHP\Form\Component\Row;
-use PsrPHP\Form\Field\Code;
-use PsrPHP\Form\Field\Hidden;
-use PsrPHP\Form\Field\Input;
-use PsrPHP\Form\Field\Summernote;
-use PsrPHP\Form\Field\Textarea;
+use PsrPHP\Form\Col;
+use PsrPHP\Form\Row;
+use PsrPHP\Form\Code;
+use PsrPHP\Form\Input;
+use PsrPHP\Form\Summernote;
+use PsrPHP\Form\Textarea;
 use PsrPHP\Request\Request;
 use PsrPHP\Router\Router;
 
@@ -32,7 +31,7 @@ class Update extends Common
         $form->addItem(
             (new Row())->addCol(
                 (new Col('col-md-8'))->addItem(
-                    (new Hidden('id', $section['id'])),
+                    (new Input('id', 'id', $section['id']))->setType('hidden'),
                     (new Input('备注', 'tips', $section['tips'])),
                     ...(function () use ($router, $section): array {
                         $res = [];
@@ -46,11 +45,11 @@ class Update extends Common
                                 break;
 
                             case 'tpl':
-                                $res[] = (new Code('模板', 'content', $section['content']))->set('help', '支持{$section}变量');
+                                $res[] = (new Code('模板', 'content', $section['content']))->setHelp('支持{$section}变量');
                                 break;
 
                             case 'data':
-                                $res[] = (new Code('渲染模板', 'content', $section['content']))->set('help', '支持{$section}、{$items}变量');
+                                $res[] = (new Code('渲染模板', 'content', $section['content']))->setHelp('支持{$section}、{$items}变量');
                                 break;
 
                             default:

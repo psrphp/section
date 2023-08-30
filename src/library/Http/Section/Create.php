@@ -8,13 +8,12 @@ use App\Psrphp\Admin\Http\Common;
 use App\Psrphp\Admin\Lib\Response;
 use PsrPHP\Database\Db;
 use PsrPHP\Form\Builder;
-use PsrPHP\Form\Component\Col;
-use PsrPHP\Form\Component\Row;
-use PsrPHP\Form\Field\Code;
-use PsrPHP\Form\Field\Hidden;
-use PsrPHP\Form\Field\Input;
-use PsrPHP\Form\Field\Summernote;
-use PsrPHP\Form\Field\Textarea;
+use PsrPHP\Form\Col;
+use PsrPHP\Form\Row;
+use PsrPHP\Form\Code;
+use PsrPHP\Form\Input;
+use PsrPHP\Form\Summernote;
+use PsrPHP\Form\Textarea;
 use PsrPHP\Request\Request;
 use PsrPHP\Router\Router;
 
@@ -28,8 +27,8 @@ class Create extends Common
         $form->addItem(
             (new Row())->addCol(
                 (new Col('col-md-9'))->addItem(
-                    (new Hidden('type', $request->get('type'))),
-                    (new Input('名称', 'name'))->set('help', '名称只能由字母开头，字母、数字、下划线组成，不超过20个字符'),
+                    (new Input('type', 'type', $request->get('type')))->setType('hidden'),
+                    (new Input('名称', 'name'))->setHelp('名称只能由字母开头，字母、数字、下划线组成，不超过20个字符'),
                     (new Input('备注', 'tips')),
                     ...(function () use ($request, $router): array {
                         $res = [];
@@ -43,11 +42,11 @@ class Create extends Common
                                 break;
 
                             case 'tpl':
-                                $res[] = (new Code('模板', 'content'))->set('help', '支持{$section}变量');
+                                $res[] = (new Code('模板', 'content'))->setHelp('支持{$section}变量');
                                 break;
 
                             case 'data':
-                                $res[] = (new Code('渲染模板', 'content'))->set('help', '支持{$section}、{$items}变量');
+                                $res[] = (new Code('渲染模板', 'content'))->setHelp('支持{$section}、{$items}变量');
                                 break;
 
                             default:

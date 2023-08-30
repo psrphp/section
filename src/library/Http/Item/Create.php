@@ -8,12 +8,12 @@ use App\Psrphp\Admin\Http\Common;
 use App\Psrphp\Admin\Lib\Response;
 use PsrPHP\Database\Db;
 use PsrPHP\Form\Builder;
-use PsrPHP\Form\Component\Col;
-use PsrPHP\Form\Component\Row;
-use PsrPHP\Form\Field\Cover;
-use PsrPHP\Form\Field\Hidden;
-use PsrPHP\Form\Field\Input;
-use PsrPHP\Form\Field\Radio;
+use PsrPHP\Form\Col;
+use PsrPHP\Form\Row;
+use PsrPHP\Form\Cover;
+use PsrPHP\Form\Input;
+use PsrPHP\Form\Radio;
+use PsrPHP\Form\Radios;
 use PsrPHP\Request\Request;
 use PsrPHP\Router\Router;
 
@@ -32,15 +32,15 @@ class Create extends Common
         $form->addItem(
             (new Row())->addCol(
                 (new Col('col-md-9'))->addItem(
-                    (new Hidden('section_id', $section['id'])),
+                    (new Input('section_id', $section['id'])),
                     (new Input('标题', 'title')),
                     (new Input('标题样式', 'style')),
                     (new Cover('图片', 'pic', null, $router->build('/psrphp/admin/tool/upload'))),
                     (new Input('链接地址', 'url', null)),
-                    (new Radio('是否发布', 'state', 0, [
-                        '0' => '否',
-                        '1' => '是',
-                    ]))
+                    (new Radios('是否发布'))->addRadio(
+                        new Radio('否', 'state', 0, true),
+                        new Radio('是', 'state', 1, false),
+                    )
                 )
             )
         );
