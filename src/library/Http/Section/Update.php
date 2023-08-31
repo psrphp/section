@@ -12,6 +12,7 @@ use PsrPHP\Form\Col;
 use PsrPHP\Form\Row;
 use PsrPHP\Form\Code;
 use PsrPHP\Form\Input;
+use PsrPHP\Form\Hidden;
 use PsrPHP\Form\Summernote;
 use PsrPHP\Form\Textarea;
 use PsrPHP\Request\Request;
@@ -31,7 +32,7 @@ class Update extends Common
         $form->addItem(
             (new Row())->addCol(
                 (new Col('col-md-8'))->addItem(
-                    (new Input('id', 'id', $section['id']))->setType('hidden'),
+                    (new Hidden('id', $section['id'])),
                     (new Input('备注', 'tips', $section['tips'])),
                     ...(function () use ($router, $section): array {
                         $res = [];

@@ -12,6 +12,7 @@ use PsrPHP\Form\Col;
 use PsrPHP\Form\Row;
 use PsrPHP\Form\Code;
 use PsrPHP\Form\Input;
+use PsrPHP\Form\Hidden;
 use PsrPHP\Form\Summernote;
 use PsrPHP\Form\Textarea;
 use PsrPHP\Request\Request;
@@ -27,7 +28,7 @@ class Create extends Common
         $form->addItem(
             (new Row())->addCol(
                 (new Col('col-md-9'))->addItem(
-                    (new Input('type', 'type', $request->get('type')))->setType('hidden'),
+                    (new Hidden('type', $request->get('type'))),
                     (new Input('名称', 'name'))->setHelp('名称只能由字母开头，字母、数字、下划线组成，不超过20个字符'),
                     (new Input('备注', 'tips')),
                     ...(function () use ($request, $router): array {
