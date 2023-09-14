@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Psrphp\Section\Psrphp;
 
 use App\Psrphp\Admin\Model\MenuProvider;
-use App\Psrphp\Section\Http\Section\Index;
-use Psr\EventDispatcher\ListenerProviderInterface;
+use App\Psrphp\Section\Http\Index;
 use PsrPHP\Framework\Framework;
 use PsrPHP\Psr11\Container;
 use PsrPHP\Template\Template;
+use Psr\EventDispatcher\ListenerProviderInterface;
 
 class ListenerProvider implements ListenerProviderInterface
 {

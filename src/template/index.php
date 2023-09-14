@@ -2,11 +2,8 @@
 <h1>区块管理</h1>
 
 <fieldset>
-    <legend>新增</legend>
-    <a href="{:$router->build('/psrphp/section/section/create', ['type'=>'text'])}">简单文本</a>
-    <a href="{:$router->build('/psrphp/section/section/create', ['type'=>'WYSIWYG'])}">富文本</a>
-    <a href="{:$router->build('/psrphp/section/section/create', ['type'=>'tpl'])}">模板</a>
-    <a href="{:$router->build('/psrphp/section/section/create', ['type'=>'data'])}">数据</a>
+    <legend>管理</legend>
+    <a href="{:$router->build('/psrphp/section/create')}">新增</a>
 </fieldset>
 
 <table style="margin-top: 20px;">
@@ -29,11 +26,8 @@
             </td>
             <td><code>{literal}{section{/literal} {$vo.name}{literal}}{/literal}</code></td>
             <td>
-                <a href="{:$router->build('/psrphp/section/section/update', ['id'=>$vo['id']])}">编辑</a>
-                <a href="{:$router->build('/psrphp/section/section/delete', ['id'=>$vo['id']])}" onclick="return confirm('确定删除吗？删除后不可恢复！');">删除</a>
-                {if $vo['type'] == 'data'}
-                <a href="{:$router->build('/psrphp/section/item/index', ['section_id'=>$vo['id']])}">数据管理</a>
-                {/if}
+                <a href="{:$router->build('/psrphp/section/update', ['id'=>$vo['id']])}">编辑</a>
+                <a href="{:$router->build('/psrphp/section/delete', ['id'=>$vo['id']])}" onclick="return confirm('确定删除吗？删除后不可恢复！');">删除</a>
                 <a href="#" onclick="event.target.parentNode.parentNode.nextElementSibling.style.display=event.target.parentNode.parentNode.nextElementSibling.style.display=='table-row'?'none':'table-row'">预览</a>
             </td>
         </tr>

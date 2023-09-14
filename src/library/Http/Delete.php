@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Psrphp\Section\Http\Item;
+namespace App\Psrphp\Section\Http;
 
 use App\Psrphp\Admin\Http\Common;
 use App\Psrphp\Admin\Lib\Response;
@@ -15,10 +15,9 @@ class Delete extends Common
         Db $db,
         Request $request,
     ) {
-        $db->delete('psrphp_section_item', [
+        $db->delete('psrphp_section', [
             'id' => $request->get('id'),
         ]);
-
         return Response::success('操作成功！');
     }
 }

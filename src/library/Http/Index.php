@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Psrphp\Section\Http\Section;
+namespace App\Psrphp\Section\Http;
 
 use App\Psrphp\Admin\Http\Common;
 use PsrPHP\Database\Db;
@@ -14,8 +14,8 @@ class Index extends Common
         Db $db,
         Template $template
     ) {
-        return $template->renderFromFile('section/index@psrphp/section', [
-            'sections' => $db->select('psrphp_section_section', '*'),
+        return $template->renderFromFile('index@psrphp/section', [
+            'sections' => $db->select('psrphp_section', '*'),
         ]);
     }
 }
